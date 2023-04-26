@@ -1,5 +1,3 @@
-/* @import './base.css'; */
-/* @import './style.css'; */
 *{font-size: x-large;font-weight: bold;margin:0;padding:0;list-style:none;text-decoration:none;box-sizing: border-box;user-select: none;font-family: myFirstFont;}
 .left{float:left}.right{float:right}.text_right{text-align:right}
 html{height: auto;width: 100%;background-color: #d2ecfa;}
@@ -295,4 +293,3 @@ main{width: 100%;height: 90%;position:relative;margin-top: 20px;display: flex;}
   #hideapp{flex-direction: column;}
   #hideapp a img{margin: auto;max-width: 80vw;max-height: 40vh;}
 }
-
