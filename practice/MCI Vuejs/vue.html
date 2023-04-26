@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="title">
+                <h1>{{ title }}</h1>  <!-- v-bind可縮寫: 也可縮寫{{}} -->
+                <h2>{{ index+1 }}</h2>
+                <h3>{{ today.case_name }}</h3>
+            </div>          <!-- v-on: 可縮寫@ -->
+            <div id="photo" v-if="index != 0" @click="changeIndex(+1)">666</div>
+            <div id="photo" v-if="index < total-1" @click="changeIndex(-1)">000</div>
+        </div>
+    </div>
+    <script>
+        var case_time = getTime(0,Math.floor(Math.random()*(10-5+1))+5,Math.floor(Math.random()*(30-0+1))+0,Math.floor(Math.random()*(24-0+1))+0,Math.floor(Math.random()*(60-0+1))+0,Math.floor(Math.random()*(60-0+1))+0);
+        function getRandom(min,max){
+            return Math.floor(Math.random()*(max-min+1))+min;
+        };
+        function getTime(yearr,monthh,dayy,hourr,minn,ss){
+            var time=new Date();
+            var year=time.getFullYear();
+            var month=time.getMonth();
+            var day=time.getDate();
+            var hour=time.getHours();
+            var min=time.getMinutes();
+            var s=time.getSeconds();
+            time=new Date(year-yearr,month-monthh,day-dayy,hour-hourr,min-minn,s-ss);
+            return time.toLocaleString('chinese',{hour12:false});
+        }
+
+
+        let data = {
+            title: '爬寵與我的斜槓人生',
+            index: 0,
+            src: './material/IOS.png',
+            menu: [{
+                o:"",
+                case_id: 202300000,
+                case_name: ['區間遊覽車追撞案','安安'][Math.floor(Math.random() * 2)],
+                case_county: ['台北市','新北市','基隆市','桃園市','宜蘭縣','花蓮市'][Math.floor(Math.random() * 6)],
+                case_time: case_time,
+                case_state: ['進行中','已結案'][Math.floor(Math.random() * 2)],
+                cs_startime: case_time,
+                cartotal: getRandom(0,4),
+                station:[]
+                },{
+                o:"",
+                case_id: 202300001,
+                case_name: ['釣蝦場火災案','一ㄦ'][Math.floor(Math.random() * 2)],
+                case_county: ['台北市','新北市','基隆市','桃園市','宜蘭縣','花蓮市'][Math.floor(Math.random() * 6)],
+                case_time: case_time,
+                case_state: ['進行中','已結案'][Math.floor(Math.random() * 2)],
+                cs_startime: case_time,
+                cartotal: getRandom(0,4),
+                station:[]
+                },
+            ]
+        }
+        let vm = new Vue({
+            el: '#app',
+            data: data,
+            computed: {  //類變數
+                today(){
+                    return this.menu[this.index]
+                },
+                total(){
+                    return this.menu.length
+                }
+            },
+            methods: {
+                changeIndex(change){
+                    this.index = (this.index + change + this.total) % this.total
+                }
+            },
+        })
+    </script>
+</body>
+</html>

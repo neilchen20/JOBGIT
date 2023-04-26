@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>DataTables Example</title>
+  <!-- 引入 DataTables 的 CSS 文件 -->
+
+  <script src="js/jquery-3.5.1.min.js"></script>
+    
+
+  <script src="datatable/js/1.12.1jquery.dataTables.min.js"></script>
+  <script src="datatable/js/2.3.0dataTables.responsive.min.js"></script>
+  <!-- RWD Javascript連結-->
+
+  <!-- CSS 連結 -->
+  <link rel="stylesheet" href="datatable/css/dataTable.css">
+  <link rel="stylesheet" href="datatable/css/responsive.dataTables.min.css">
+  <!-- RWD CSS連結 -->
+
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    body{background-color: #f76d6df3;}
+  </style>
+</head>
+<body>
+
+<table id="yourDataTableId" class="display">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>John Doe</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Jane Smith</td>
+      <td>25</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 引入 jQuery 和 DataTables 的 JavaScript 文件 -->
+
+<script>
+var firstRow = $('#yourDataTableId tbody tr:first');
+
+// 保存原始的背景顏色
+var originalBgColor = firstRow.css('background-color');
+
+// 將第一行 tr 背景顏色設置為白色
+// firstRow.css('background-color', '#FFFFFF');
+
+// 2 秒後將背景顏色慢慢淡回原始的背景顏色
+setTimeout(function() {
+  firstRow.css('background-color', 'rgba(9, 144, 61, 0.805)');
+  firstRow.animate({ display: 'none' }, 2000);
+  console.log('執行');
+}, 2000);
+
+
+function Show(row,state) {
+  if (pagination == "home") {
+    var firstRow = document.querySelector('#data_table tbody tr:first-child');
+    var modal = document.querySelector('.modal');
+    if (row == undefined) {
+      // var firstRow = document.querySelector('#data_table tbody tr:first-child');
+      $('#data_table tbody tr:first').css('background-color', 'rgba(76, 220, 131, 0.911)');
+      setTimeout(function() {
+        firstRow.style.transition = 'background-color 2s';
+        firstRow.style.backgroundColor = '#F4EFDC';
+      }, 2000);
+    }
+    else if(state == -1){
+      var case_table = $('#data_table').DataTable();
+      var targetRow = case_table.row(row).node();
+      var originalBGC = window.getComputedStyle(targetRow).backgroundColor;
+      targetRow.style.backgroundColor = 'rgba(247, 109, 109, 0.953)';
+      setTimeout(function() {
+        targetRow.style.transition = 'background-color 2s';
+        targetRow.style.backgroundColor = originalBGC;
+      }, 2000);
+    }
+    else{
+      $(targetRow).css('background-color', '#ff9090f3');
+      setTimeout(function() {
+        targetRow.style.transition = 'background-color 2s';
+        targetRow.style.backgroundColor = originalBGC;
+      }, 2000);
+    }
+  }
+}
+
+
+
+
+</script>
+
+</body>
+</html>
