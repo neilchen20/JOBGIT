@@ -15,7 +15,7 @@ import { MoonNight } from '@element-plus/icons-vue'
         </el-row>
       </el-header>
 
-      <el-main class="bg-gray-100">Main</el-main>
+      <el-main class="bg-gray-100"><a href="https://neilchen20.github.io/Neilgit/demo/DSMdemo/index.html">大傷</a></el-main>
 
       <el-footer class="bg-blue-50">Neil Chen</el-footer>
     </el-container>
