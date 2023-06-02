@@ -1,6 +1,6 @@
 @import './base.css';
 
-body{
+body {
   height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -13,7 +13,6 @@ body{
   font-weight: normal;
   text-align: center;
 }
-
 
 @media (min-width: 1024px) {
   /* body {

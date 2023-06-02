@@ -12,16 +12,14 @@ import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import 'virtual:windi.css'
 
-
 const vuetify = createVuetify({
-    components,
-    directives,
+  components,
+  directives
 })
 
-const app = createApp(App).use(router).use(vuetify).use(ElementPlus)
+const app = createApp(App).use(router).use(vuetify).use(ElementPlus);
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-    app.component(key, component)
+  app.component(key, component)
 }
-
 app.mount('#app')
