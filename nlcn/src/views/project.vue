@@ -1,96 +1,59 @@
 <template>
   <el-container>
-    <el-header class="mt-4 mb-5">
+    <el-header class="mt-5 mb-5">
       <span class="text-5xl w-100 font-bold">Projects</span>
     </el-header>
 
     <el-main class="w-100 flex">
-      <!-- <el-row>
-                <el-col :span="4">
-                    <el-card :body-style="{ padding: '0px' }" class="rounded-3xl">
-                        <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image" />
-                        <div style="padding: 14px">
-                        <span>大量傷病患救護管理系統</span>
-                        <div class="bottom">
-                            <span class="leading-snug ">該系統主要是讓消防人員藉由大傷系統瞭解案件現場的狀況</span>
-                            <el-button text class="button" @click="goToMCI">Open</el-button>
-                        </div>
-                        </div>
-                    </el-card>
-                </el-col>
-                <el-col>
-                    123
-                </el-col>
-                <el-col>
-                    456
-                </el-col>
-            </el-row> -->
-      <el-timeline class="w-screen-lg">
-        <el-timeline-item center timestamp="2023/5/20" placement="top" hollow color="#0bbd87">
-          <el-card>
+      <el-timeline class="flex flex-col w-[70%]">
+        <el-timeline-item
+          v-for="card in cards"
+          :key="card.id"
+          center
+          :timestamp="card.timestamp"
+          placement="top"
+          hollow
+          :color="card.color"
+        >
+          <el-card :body-style="fontColor">
             <el-row>
               <el-col :span="12">
-                <el-image :src="proN" class="h-100" />
+                <el-image
+                  class="h-100"
+                  :src="card.url"
+                  :zoom-rate="1.5"
+                  :preview-src-list="card.srcList"
+                  :initial-index="0"
+                  fit="cover"
+                  hide-on-click-modal
+                  close-on-press-escape
+                />
               </el-col>
               <el-col :span="12" class="">
-                <span class="text-xl font-bold">Neil Chen個人網站</span><br />
-                <span class="mt-5 flex h-37"></span>
-                <div class="flex flex-wrap gap-2">
-                  <el-tag
-                    v-for="Ndev in Ndev"
-                    :key="Ndev.label"
-                    :type="Ndev.type"
-                    class="mx-1"
-                    effect="light"
-                    round
-                  >
-                    {{ Ndev.label }}
-                  </el-tag>
-                </div>
-                <el-button text class="float-right" @click="goToHome">Open</el-button>
-              </el-col>
-            </el-row>
-          </el-card>
-        </el-timeline-item>
-        <el-timeline-item center timestamp="2023/1/6" placement="top" hollow color="gray">
-          <el-card>
-            <el-row>
-              <el-col :span="12">
-                <el-image :src="proMCI" class="h-100" />
-              </el-col>
-              <el-col :span="12" class="-mr-3">
-                <span class="text-xl font-bold">大量傷病患救護管理系統</span><br />
-                <span class="mt-5 flex h-37"
-                  >該系統的功能主要是讓消防人員藉由大傷系統瞭解案件現場的狀況，可以看到各個救護站以及傷病患等資訊。</span
+                <span class="text-xl font-bold">{{ card.title }}</span
+                ><br />
+                <span
+                  class="mt-5 flex h-37 leading-10 text-base tracking-wider text-justify pl-5 pr-2"
+                  >{{ card.content }}</span
                 >
                 <div class="flex flex-wrap gap-2">
                   <el-tag
-                    v-for="MCIdev in MCIdev"
-                    :key="MCIdev.label"
-                    :type="MCIdev.type"
+                    v-for="tag in card.tags"
+                    :key="tag.label"
+                    :type="tag.type"
                     class="mx-1"
                     effect="light"
                     round
                   >
-                    {{ MCIdev.label }}
+                    {{ tag.label }}
                   </el-tag>
                 </div>
-                <el-button text class="float-right" @click="goToMCI">Open</el-button>
-              </el-col>
-            </el-row>
-          </el-card>
-        </el-timeline-item>
-
-        <el-timeline-item center timestamp="2022/6/26" placement="top" hollow color="gray">
-          <el-card>
-            <el-row>
-              <el-col :span="12">
-                <el-image :src="proShen" class="h-100" />
-              </el-col>
-              <el-col :span="12" class="-mr-3">
-                <span class="text-xl font-bold">客戶資料紀錄管理系統</span><br />
-                <span class="mt-5 flex h-42"></span>
-                <el-button text class="float-right" @click="goToHome">Open</el-button>
+                <el-button
+                  text
+                  class="float-right"
+                  @click="card.id === 2 ? goToMCI() : goToHome()"
+                  >{{ card.btn }}</el-button
+                >
               </el-col>
             </el-row>
           </el-card>
@@ -99,63 +62,105 @@
     </el-main>
 
     <el-footer class="m-13">
-      <span class="cursor-pointer mr-100" @click="goToHome">Neil Chen % cd ↵</span>
+      <span class="cursor-pointer mr-100" @click="goToHome">{{ footerText }}</span>
     </el-footer>
     <router-view />
   </el-container>
 </template>
 
-<script>
-import { ref } from 'vue'
+<script setup>
+import { ref, computed, defineProps } from 'vue'
 import { useRouter } from 'vue-router'
 
-export default {
-  setup() {
-    const proN = ref('/src/assets/N.png')
-    const Ndev = ref([
+const props = defineProps({
+  //待修改
+  theme: {
+    type: String,
+    required: true
+  }
+})
+
+const fontColor = computed(() => ({
+  Color: props.theme === 'DARK' ? 'black' : 'white'
+}))
+console.log(props.theme)
+
+const goToMCI = () => {
+  window.location.href = 'https://neilchen20.github.io/MCIdemo/index.html'
+}
+
+const cards = ref([
+  {
+    id: 1,
+    timestamp: '2023/5/20~',
+    color: '#0bbd87',
+    url: '/src/assets/project/proNLC1.png',
+    srcList: ['/src/assets/project/proNLC1.png', '/src/assets/project/proNLC2.png'],
+    title: 'Neil Chen個人網站',
+    content:
+      '在完成已上架的第二份作品後，我透過自學來提升自己的能力，目前正在練習製作我的個人網站，裡面有我過往的作品、興趣以及未來會有的按讚功能等等。',
+    tags: [
       { type: 'success', label: 'Vue.js' },
       { type: '', label: 'Element Plus' },
-      { type: '', label: 'Windi CSS' },
-      { type: 'danger', label: '' },
-      { type: 'warning', label: '' }
-    ])
-
-    const proMCI = ref('/src/assets/MCI.png')
-    const goToMCI = () => {
-      window.location.href = 'https://neilchen20.github.io/MCIdemo/index.html'
-    }
-    const MCIdev = ref([
+      { type: '', label: 'Windi CSS' }
+    ],
+    btn: 'Open'
+  },
+  {
+    id: 2,
+    timestamp: '~2023/1/6',
+    color: 'gray',
+    url: '/src/assets/project/proMCI1.png',
+    srcList: [
+      '/src/assets/project/proMCI1.png',
+      '/src/assets/project/proMCI2.png',
+      '/src/assets/project/proMCI3.png',
+      '/src/assets/project/proMCI4.png',
+      '/src/assets/project/proMCI5.png',
+      '/src/assets/project/proMCI6.png'
+    ],
+    title: '大量傷病患救護管理系統',
+    content:
+      '該系統的功能主要是讓消防人員藉由大傷系統瞭解案件現場的狀況，整個架構分為案件資訊、救護站資訊以及傷病患資訊等頁面，可以看到各個案件內的分析數據。',
+    tags: [
       { type: '', label: 'HTML' },
       { type: 'success', label: 'CSS' },
       { type: 'info', label: 'JavaScript' },
-      { type: 'danger', label: 'Datatables' },
-      { type: 'warning', label: 'jQuery' }
-    ])
-    const proShen = ref('/src/assets/shen.png')
-
-    const router = useRouter()
-    const goToHome = () => {
-      router.push('/')
-    }
-    return {
-      proN,
-      Ndev,
-      proMCI,
-      goToMCI,
-      MCIdev,
-      proShen,
-      goToHome
-    }
+      { type: 'danger', label: 'DataTables' }
+    ],
+    btn: 'Open'
+  },
+  {
+    id: 3,
+    timestamp: '~2022/6/26',
+    color: 'gray',
+    url: '/src/assets/project/proShen1.png',
+    srcList: ['/src/assets/project/proShen1.png'],
+    title: '客戶資料紀錄管理系統',
+    content:
+      '該系統為自行接案的一項專案，我在理解店家的需求後透過Visual Studio進行開發，店家可以透過此系統進行顧客的資料創建、維護、查找及刪除，可記錄顧客的姓名、地址、電話、維修項目與金額。',
+    tags: [
+      { type: '', label: 'Windows Form' },
+      { type: 'success', label: 'C#' },
+      { type: 'info', label: 'SQL Server Management Studio' }
+    ],
+    btn: 'Open'
   }
+])
+
+const router = useRouter()
+const goToHome = () => {
+  router.push('/')
 }
+
+const footerText = ref('Neil Chen % cd ↵')
 </script>
 
 <style scoped>
-/* .time {
-  font-size: 12px;
-  color: #999;
+.el-image-viewer__img {
+  max-width: 90%;
+  max-height: 90%;
 }
-*/
 .bottom {
   margin-top: 13px;
   line-height: 12px;
@@ -171,5 +176,19 @@ export default {
 
 .el-col-12 {
   height: 246px;
+}
+
+.proTimeline-Dark {
+  background-color: rgba(0, 0, 0, 0.038);
+  color: whitesmoke;
+}
+
+.el-timeline-item__content,
+.el-card {
+  background-color: rgba(255, 255, 255, 0.409);
+}
+
+.el-image-viewer__mask {
+  background: rgb(209, 192, 192);
 }
 </style>
