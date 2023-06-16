@@ -33,10 +33,10 @@
                 <span class="text-xl font-bold">{{ card.title }}</span
                 ><br />
                 <span
-                  class="mt-5 flex h-37 leading-10 text-base tracking-wider text-justify pl-5 pr-2"
+                  class="mt-5 flex h-37 leading-10 text-base tracking-wider text-justify pl-5 pr-2 text-lg"
                   >{{ card.content }}</span
                 >
-                <div class="flex flex-wrap gap-2">
+                <div class="flex flex-wrap gap-2 pl-5 pt-1">
                   <el-tag
                     v-for="tag in card.tags"
                     :key="tag.label"
@@ -62,7 +62,7 @@
     </el-main>
 
     <el-footer class="m-13">
-      <span class="cursor-pointer mr-100" @click="goToHome">{{ footerText }}</span>
+      <span class="cursor-pointer mr-100 btnani" @click="goToHome">{{ footerText }}</span>
     </el-footer>
     <router-view />
   </el-container>
@@ -138,7 +138,7 @@ const cards = ref([
     srcList: ['/src/assets/project/proShen1.png'],
     title: '客戶資料紀錄管理系統',
     content:
-      '該系統為自行接案的一項專案，我在理解店家的需求後透過Visual Studio進行開發，店家可以透過此系統進行顧客的資料創建、維護、查找及刪除，可記錄顧客的姓名、地址、電話、維修項目與金額。',
+      '該系統為自行接案的項目，我在理解店家需求後進行開發，店家可以透過此系統進行顧客的資料創建、維護、查找及刪除，可記錄姓名、地址、電話、維修項目與金額。',
     tags: [
       { type: '', label: 'Windows Form' },
       { type: 'success', label: 'C#' },
@@ -185,7 +185,7 @@ const footerText = ref('Neil Chen % cd ↵')
 
 .el-timeline-item__content,
 .el-card {
-  background-color: rgba(255, 255, 255, 0.409);
+  background-color: rgba(255, 255, 255, 0.679);
 }
 
 .el-image-viewer__mask {

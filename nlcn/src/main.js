@@ -12,6 +12,7 @@ import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import 'virtual:windi.css'
 
+
 const vuetify = createVuetify({
   components,
   directives

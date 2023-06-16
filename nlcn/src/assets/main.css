@@ -1,12 +1,15 @@
 @import './base.css';
 
 html{
+  max-width: 100%;
+  height: auto;
   user-select:none;
   overflow-y: auto;
 }
 
 body {
-  height: 100%;
+  max-width: 100%;
+  height: auto;
   overflow-x: hidden;
 }
 
@@ -16,6 +19,31 @@ body {
   margin: 0 auto;
   font-weight: normal;
   text-align: center;
+}
+
+.btnani {
+  cursor: pointer;
+  font-size: 20px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+.btnani:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background-color: #e46510d2;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.btnani:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 @media (min-width: 1024px) {
@@ -29,4 +57,10 @@ body {
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   } */
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 375px) {
 }

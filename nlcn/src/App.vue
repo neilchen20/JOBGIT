@@ -17,26 +17,44 @@
               alt="Logo"
             /></div
         ></el-col>
-        <el-col :span="8"></el-col>
-        <el-col :span="8">
+        <el-col class="float-right" :span="16">
           <el-row>
-            <el-col :span="6"
-              ><span class="cursor-pointer relative underline" @click="goToProject">{{
-                headerProject
-              }}</span></el-col
-            >
-            <el-col :span="6"
-              ><span class="cursor-pointer relative underline" @click="goToInterest">{{
-                headerInterest
-              }}</span></el-col
-            >
-            <el-col :span="6"
+            <el-col :xs="6" :sm="6" :md="5" :lg="4" :xl="5">
+              <template v-if="width < minWidth">
+                <el-icon class="btnani" :size="25" @click="goToProject">
+                  <Memo />
+                </el-icon>
+                <!-- <el-icon name="icon-name"></el-icon> -->
+              </template>
+              <template v-else>
+                <span class="btnani" @click="goToProject">{{ headerProject }}</span>
+              </template>
+            </el-col>
+            <el-col :xs="6" :sm="6" :md="5" :lg="4" :xl="5">
+              <template v-if="width < minWidth">
+                <el-icon class="btnani" :size="27" @click="goToInterest">
+                  <SwitchFilled />
+                </el-icon>
+              </template>
+              <template v-else>
+                <span class="btnani" @click="goToInterest">{{ headerInterest }}</span>
+              </template>
+            </el-col>
+            <!-- <el-col :span="6"
               ><span class="cursor-pointer relative underline">{{ headerLogin }}</span></el-col
-            >
-            <el-col :span="6"
-              ><span class="cursor-pointer relative underline" @click="toggleTheme">{{
-                theme === 'LIGHT' ? 'LIGHT' : 'DARK'
-              }}</span>
+            > -->
+
+            <el-col :xs="6" :sm="6" :md="5" :lg="4" :xl="5">
+              <template v-if="width < minWidth">
+                <el-icon class="btnani" :size="25" @click="toggleTheme">
+                  <MoonNight />
+                </el-icon>
+              </template>
+              <template v-else>
+                <span class="btnani" @click="toggleTheme">{{
+                  theme === 'LIGHT' ? 'LIGHT' : 'DARK'
+                }}</span>
+              </template>
             </el-col>
           </el-row>
         </el-col>
@@ -51,6 +69,11 @@
 import Loading from '@/components/loading.vue'
 import { ref, computed, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
+import { useWindowSize } from '@vueuse/core'
+
+const width = useWindowSize().width
+const minWidth = 768
+
 const router = useRouter()
 
 const isLoading = ref(true)
@@ -61,7 +84,7 @@ onBeforeUnmount(() => {
 
 const headerProject = ref('PROJECTS')
 const headerInterest = ref('INTERESTS')
-const headerLogin = ref('LOGIN')
+// const headerLogin = ref('LOGIN')
 const theme = ref('DARK')
 
 const goToHome = () => {
@@ -110,5 +133,6 @@ div {
 
 .el-row {
   align-items: center;
+  justify-content: flex-end;
 }
 </style>
