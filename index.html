@@ -10,18 +10,42 @@
     html{
         max-width: 100%;
         width: 100%;
-        height: 100%;
     }
     body{
         background-image: url('./nlcn/src/assets/bgt.JPG');
         max-width: 100%;
         width: 100%;
-        height: 100vh;
         margin: 0;
+    }
+    .btnani {
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+        font-size: 20px;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+    .btnani:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: -3px;
+        left: 0;
+        background-color: #e46510d2;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+    .btnani:hover:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
     }
 </style>
 <body>
-    <img style="width: 100%;z-index: -1;opacity: 35%;" src="./nlcn/src/assets/bgt.JPG" alt="Image"/>
-    <h1 style="color: antiquewhite;bottom: 10px;">網站開發中。。。敬請期待</h1>
+    <img style="width: 100%;z-index: -1;opacity: 35%;position: absolute;" src="./nlcn/src/assets/bgt.JPG" alt="Image"/>
+    <h1 style="color: antiquewhite;top: 20px;position: relative;">網站開發中。。。敬請期待</h1>
+    <a class="btnani" href="https://neilchen20.github.io/MCIdemo/index.html">大量傷病患救護管理系統</a>
 </body>
 </html>
