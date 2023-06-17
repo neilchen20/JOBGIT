@@ -5,7 +5,7 @@
     </el-header>
 
     <el-main class="w-100 flex">
-      <el-timeline class="flex flex-col w-[70%]">
+      <el-timeline class="proTimeline">
         <el-timeline-item
           v-for="card in cards"
           :key="card.id"
@@ -16,8 +16,8 @@
           :color="card.color"
         >
           <el-card :body-style="fontColor">
-            <el-row>
-              <el-col :span="12">
+            <el-row class="proCard">
+              <el-col class="proPhoto" :span="12">
                 <el-image
                   class="h-100"
                   :src="card.url"
@@ -157,6 +157,27 @@ const footerText = ref('Neil Chen % cd ↵')
 </script>
 
 <style scoped>
+@media (max-width: 768px) {
+  .el-card__body {
+    height: 60vh;
+  }
+  .proCard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .proPhoto {
+    max-height: 50%;
+  }
+  .proTimeline {
+    width: 90%;
+  }
+}
+.proTimeline {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
 .el-image-viewer__img {
   max-width: 90%;
   max-height: 90%;

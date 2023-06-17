@@ -59,8 +59,16 @@ body {
   } */
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
+  
 }
 
-@media (min-width: 375px) {
+@media (max-width: 375px) {
+  .el-card__body{
+    height: 60vh;
+  }
+  .rwd{
+    display: flex;
+    flex-direction: column;
+  }
 }

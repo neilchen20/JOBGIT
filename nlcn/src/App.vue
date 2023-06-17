@@ -19,7 +19,7 @@
         ></el-col>
         <el-col class="float-right" :span="16">
           <el-row>
-            <el-col :xs="6" :sm="6" :md="5" :lg="4" :xl="5">
+            <el-col :xs="6" :sm="6" :md="5" :lg="4" :xl="4">
               <template v-if="width < minWidth">
                 <el-icon class="btnani" :size="25" @click="goToProject">
                   <Memo />
@@ -30,7 +30,7 @@
                 <span class="btnani" @click="goToProject">{{ headerProject }}</span>
               </template>
             </el-col>
-            <el-col :xs="6" :sm="6" :md="5" :lg="4" :xl="5">
+            <el-col :xs="6" :sm="6" :md="5" :lg="4" :xl="4">
               <template v-if="width < minWidth">
                 <el-icon class="btnani" :size="27" @click="goToInterest">
                   <SwitchFilled />
@@ -44,7 +44,7 @@
               ><span class="cursor-pointer relative underline">{{ headerLogin }}</span></el-col
             > -->
 
-            <el-col :xs="6" :sm="6" :md="5" :lg="4" :xl="5">
+            <el-col :xs="6" :sm="6" :md="5" :lg="4" :xl="4">
               <template v-if="width < minWidth">
                 <el-icon class="btnani" :size="25" @click="toggleTheme">
                   <MoonNight />
