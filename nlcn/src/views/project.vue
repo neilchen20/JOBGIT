@@ -1,11 +1,11 @@
 <template>
   <el-container>
     <el-header class="mt-5 mb-5">
-      <span class="text-5xl w-100 font-bold">Projects</span>
+      <span class="text-5xl w-100 font-bold">Projects{{ width }}</span>
     </el-header>
 
     <el-main class="w-100 flex">
-      <el-timeline class="flex flex-col w-[70%]">
+      <el-timeline class="flex flex-col w-[70%] h-[100%]">
         <el-timeline-item
           v-for="card in cards"
           :key="card.id"
@@ -15,9 +15,9 @@
           hollow
           :color="card.color"
         >
-          <el-card :body-style="fontColor">
-            <el-row>
-              <el-col :span="12">
+          <el-card class="proCard" :body-style="fontColor">
+            <el-row class="proRow">
+              <el-col class="relative" :span="12">
                 <el-image
                   class="h-100"
                   :src="card.url"
@@ -29,31 +29,33 @@
                   close-on-press-escape
                 />
               </el-col>
-              <el-col :span="12" class="">
+              <el-col class="relative" :span="12">
                 <span class="text-xl font-bold">{{ card.title }}</span
                 ><br />
                 <span
-                  class="mt-5 flex h-37 leading-10 text-base tracking-wider text-justify pl-5 pr-2 text-lg"
+                  class="mt-5 flex leading-10 text-base tracking-wider text-justify pl-5 pr-2 text-lg"
                   >{{ card.content }}</span
                 >
-                <div class="flex flex-wrap gap-2 pl-5 pt-1">
+                <div class="flex flex-wrap gap-2 pl-5 pt-1 absolute bottom-0 w-[100%]">
                   <el-tag
                     v-for="tag in card.tags"
                     :key="tag.label"
                     :type="tag.type"
-                    class="mx-1"
+                    class="mx-1 mt-2"
                     effect="light"
                     round
                   >
                     {{ tag.label }}
                   </el-tag>
+                  <div class="w-[100%]">
+                    <el-button
+                      text
+                      class="float-right"
+                      @click="card.id === 2 ? goToMCI() : goToHome()"
+                      >{{ card.btn }}</el-button
+                    >
+                  </div>
                 </div>
-                <el-button
-                  text
-                  class="float-right"
-                  @click="card.id === 2 ? goToMCI() : goToHome()"
-                  >{{ card.btn }}</el-button
-                >
               </el-col>
             </el-row>
           </el-card>
@@ -71,6 +73,9 @@
 <script setup>
 import { ref, computed, defineProps } from 'vue'
 import { useRouter } from 'vue-router'
+import { useWindowSize } from '@vueuse/core'
+
+const width = useWindowSize().width
 
 const props = defineProps({
   //待修改
@@ -142,7 +147,7 @@ const cards = ref([
     tags: [
       { type: '', label: 'Windows Form' },
       { type: 'success', label: 'C#' },
-      { type: 'info', label: 'SQL Server Management Studio' }
+      { type: 'info', label: 'SSMS' }
     ],
     btn: 'Open'
   }
@@ -157,6 +162,70 @@ const footerText = ref('Neil Chen % cd ↵')
 </script>
 
 <style scoped>
+.el-timeline-item__wrapper {
+  height: 100%;
+}
+
+@media (min-width: 1285px) {
+  .proCard {
+    height: auto;
+  }
+  .proRow {
+    height: calc(100vh / 3);
+  }
+  .el-col-12[data-v-64ad5096] {
+    height: 100%;
+  }
+}
+@media (max-width: 1285px) {
+  .proCard {
+    height: auto;
+  }
+  .proRow {
+    height: calc(100vh / 2.5);
+  }
+
+  .el-col-12[data-v-64ad5096] {
+    height: 100%;
+  }
+
+  .proTag {
+    margin-top: 45px;
+  }
+}
+@media (max-width: 1090px) {
+  .proCard {
+    height: auto;
+  }
+  .proRow {
+    height: calc(100vh / 2.1);
+  }
+
+  .el-col-12[data-v-64ad5096] {
+    height: 100%;
+  }
+
+  .proTag {
+    margin-top: 16%;
+  }
+}
+@media (max-width: 866px) {
+  .proCard {
+    height: auto;
+  }
+  .proRow {
+    height: calc(100vh / 1.9);
+  }
+
+  .el-col-12[data-v-64ad5096] {
+    height: 100%;
+  }
+
+  .proTag {
+    margin-top: 16%;
+  }
+}
+
 .el-image-viewer__img {
   max-width: 90%;
   max-height: 90%;
