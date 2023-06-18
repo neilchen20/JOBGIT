@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-header class="mt-5 mb-5">
-      <span class="text-5xl w-100 font-bold">Projects</span>
+      <span class="text-5xl w-100 font-bold">Projects{{ width }}</span>
     </el-header>
 
     <el-main class="w-100 flex">
@@ -29,31 +29,33 @@
                   close-on-press-escape
                 />
               </el-col>
-              <el-col :span="12" class="">
+              <el-col class="relative" :span="12">
                 <span class="text-xl font-bold">{{ card.title }}</span
                 ><br />
                 <span
-                  class="mt-5 flex h-37 leading-10 text-base tracking-wider text-justify pl-5 pr-2 text-lg"
+                  class="mt-5 flex leading-10 text-base tracking-wider text-justify pl-5 pr-2 text-lg"
                   >{{ card.content }}</span
                 >
-                <div class="flex flex-wrap gap-2 pl-5 pt-1">
+                <div class="flex flex-wrap gap-2 pl-5 pt-1 absolute bottom-0 w-[100%]">
                   <el-tag
                     v-for="tag in card.tags"
                     :key="tag.label"
                     :type="tag.type"
-                    class="mx-1"
+                    class="mx-1 mt-2"
                     effect="light"
                     round
                   >
                     {{ tag.label }}
                   </el-tag>
+                  <div class="w-[100%]">
+                    <el-button
+                      text
+                      class="float-right"
+                      @click="card.id === 2 ? goToMCI() : goToHome()"
+                      >{{ card.btn }}</el-button
+                    >
+                  </div>
                 </div>
-                <el-button
-                  text
-                  class="float-right"
-                  @click="card.id === 2 ? goToMCI() : goToHome()"
-                  >{{ card.btn }}</el-button
-                >
               </el-col>
             </el-row>
           </el-card>
@@ -71,6 +73,9 @@
 <script setup>
 import { ref, computed, defineProps } from 'vue'
 import { useRouter } from 'vue-router'
+import { useWindowSize } from '@vueuse/core'
+
+const width = useWindowSize().width
 
 const props = defineProps({
   //待修改
@@ -142,7 +147,7 @@ const cards = ref([
     tags: [
       { type: '', label: 'Windows Form' },
       { type: 'success', label: 'C#' },
-      { type: 'info', label: 'SQL Server Management Studio' }
+      { type: 'info', label: 'SSMS' }
     ],
     btn: 'Open'
   }
