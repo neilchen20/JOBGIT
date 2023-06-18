@@ -19,7 +19,6 @@
             <el-row class="proCard">
               <el-col class="proPhoto" :span="12">
                 <el-image
-                  class="h-100"
                   :src="card.url"
                   :zoom-rate="1.5"
                   :preview-src-list="card.srcList"
@@ -36,7 +35,7 @@
                   class="mt-5 flex leading-10 text-base tracking-wider text-justify pl-5 pr-2 text-lg"
                   >{{ card.content }}</span
                 >
-                <div class="flex flex-wrap gap-2 pl-5 pt-1 absolute bottom-0 w-[100%]">
+                <div class="proTagdiv">
                   <el-tag
                     v-for="tag in card.tags"
                     :key="tag.label"
@@ -162,22 +161,85 @@ const footerText = ref('Neil Chen % cd ↵')
 </script>
 
 <style scoped>
-@media (max-width: 768px) {
-  .el-card__body {
-    height: 60vh;
+.el-timeline-item__wrapper {
+  height: 100%;
+}
+
+@media (min-width: 1024px) {
+  .proTimeline[data-v-64ad5096] {
+    width: 70%;
   }
   .proCard {
-    display: flex;
-    flex-direction: column;
+    height: auto;
+  }
+
+  .el-image[data-v-64ad5096] {
     height: 100%;
   }
-  .proPhoto {
-    max-height: 50%;
+
+  .el-col-12[data-v-64ad5096] {
+    max-height: 100%;
+    max-width: 100%;
   }
-  .proTimeline {
-    width: 90%;
+
+  .proTagdiv {
+    position: relative;
+    bottom: 0;
+    width: 100%;
   }
 }
+/* @media (max-width: 1024px) {
+  .proTimeline[data-v-64ad5096] {
+    width: 90%;
+  }
+  .proCard {
+    height: 100%;
+    display: grid;
+  }
+
+  .el-image[data-v-64ad5096] {
+    height: 100%;
+  }
+
+  .el-col-12[data-v-64ad5096] {
+    max-height: 100%;
+    max-width: 100%;
+  }
+} */
+@media (max-width: 1024px) {
+  .proTimeline[data-v-64ad5096] {
+    width: 90%;
+  }
+  .proCard {
+    height: 100%;
+    display: grid;
+  }
+
+  .el-col-12[data-v-64ad5096] {
+    height: 100%;
+    max-width: 100%;
+  }
+
+  .el-image[data-v-64ad5096] {
+    height: 95%;
+  }
+}
+
+@media (max-width: 465px) {
+  .proCard {
+    height: 100%;
+    display: grid;
+  }
+}
+
+@media (max-width: 400px) {
+  .proCard {
+    /* height: 1000px; */
+    height: 100%;
+    display: grid;
+  }
+}
+
 .proTimeline {
   display: flex;
   flex-direction: column;
