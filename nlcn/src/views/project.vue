@@ -31,10 +31,7 @@
               <el-col class="relative" :span="12">
                 <span class="text-xl font-bold">{{ card.title }}</span
                 ><br />
-                <span
-                  class="mt-5 flex leading-10 text-base tracking-wider text-justify pl-5 pr-2 text-lg"
-                  >{{ card.content }}</span
-                >
+                <span class="proCardCon">{{ card.content }}</span>
                 <div class="proTagdiv">
                   <el-tag
                     v-for="tag in card.tags"
@@ -161,6 +158,17 @@ const footerText = ref('Neil Chen % cd ↵')
 </script>
 
 <style scoped>
+.proCardCon {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 10%;
+  padding-left: 20px;
+  padding-right: 8px;
+  line-height: 40px;
+  letter-spacing: 0.05em;
+  text-align: justify;
+  font-size: 1.125rem; /* 18px */
+}
 .el-timeline-item__wrapper {
   height: 100%;
 }
@@ -172,12 +180,12 @@ const footerText = ref('Neil Chen % cd ↵')
   .proCard {
     height: auto;
   }
-
   .el-image[data-v-64ad5096] {
     height: 100%;
   }
 
   .el-col-12[data-v-64ad5096] {
+    height: auto;
     max-height: 100%;
     max-width: 100%;
   }
