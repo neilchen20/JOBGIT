@@ -1,10 +1,14 @@
 @import './base.css';
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 html{
   max-width: 100%;
   height: auto;
   user-select:none;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 body {
@@ -19,6 +23,17 @@ body {
   margin: 0 auto;
   font-weight: normal;
   text-align: center;
+  overflow: hidden;
+}
+
+.backTop{
+  height: 100%;
+  width: 100%;
+  background-color: var(--el-bg-color-overlay);
+  text-align: center;
+  line-height: 45px;
+  color: #f50000;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .btnani {

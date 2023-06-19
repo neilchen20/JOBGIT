@@ -6,7 +6,8 @@
           <span class="whitespace-pre-line" v-html="main"></span>
         </div>
       </el-main>
-      <el-footer class="whitespace-pre-line h-[10vh] leading-relaxed" v-html="footer"> </el-footer>
+      <el-footer class="whitespace-pre-line h-[10vh] leading-relaxed flex-shrink-0" v-html="footer">
+      </el-footer>
     </el-container>
     <router-view />
   </div>
@@ -23,6 +24,9 @@ const footer = ref(
 </script>
 
 <style>
+::-webkit-scrollbar-track {
+  background-color: transparent; /* 设置轨道背景颜色为透明 */
+}
 #mainhover {
   position: relative;
 }

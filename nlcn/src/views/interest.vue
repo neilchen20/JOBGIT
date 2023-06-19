@@ -1,9 +1,18 @@
 <template>
   <el-container>
     <el-header class="mt-5 mb-5">
-      <span class="text-5xl w-100 font-bold">Interests</span>
+      <span class="text-5xl w-100 font-bold">Interests{{ width }}</span>
     </el-header>
     <el-main class="items-center">
+      <el-tag
+        v-for="interests in interest"
+        :key="interests.label"
+        :type="interests.type"
+        class="mx-1 mt-2 mb-5 text-lg"
+        effect="light"
+      >
+        {{ interests.label }}
+      </el-tag>
       <el-row class="justify-center">
         <el-col
           v-for="(colData1, index) in columnData1"
@@ -11,7 +20,7 @@
           :span="colData1.span"
           :offset="colData1.offset"
         >
-          <el-card class="h-[45vh]" :body-style="{ padding: '0px' }" shadow="hover">
+          <el-card class="h-[50vh]" :body-style="{ padding: '0px' }" shadow="hover">
             <el-carousel indicator-position="none">
               <el-carousel-item v-for="item in colData1.photos" :key="item">
                 <img
@@ -71,12 +80,26 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import defaultImg from '../assets/default.svg'
+import { useWindowSize } from '@vueuse/core'
+import { ref } from 'vue'
+
+const width = useWindowSize().width
 
 const router = useRouter()
 
 const goToHome = () => {
   router.push('/')
 }
+
+const interest = ref([
+  { type: '', label: '#貓奴', background: 'pink' },
+  { type: '', label: '#兩棲爬蟲' },
+  { type: '', label: '#地毯' },
+  { type: '', label: '#騎車' },
+  { type: '', label: '#展覽' },
+  { type: '', label: '#唱歌' }
+])
+
 const columnData1 = [
   {
     span: 5,
@@ -173,6 +196,10 @@ const columnData2 = [
   display: block;
 }
 
+.el-card {
+  height: 100%;
+}
+
 .el-carousel__item h3 {
   display: flex;
   color: #ffffff;
@@ -181,11 +208,7 @@ const columnData2 = [
   margin: 0;
 }
 .el-carousel {
-  height: 36vh;
-}
-
-.el-carousel__container {
-  height: 400px;
+  height: 40vh;
 }
 
 .el-carousel__item:nth-child(2n) {

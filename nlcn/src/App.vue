@@ -62,11 +62,13 @@
     </el-header>
     <router-view :theme="theme" class="hidden" />
     <router-view />
+    <backTop />
   </el-container>
 </template>
 
 <script setup>
 import Loading from '@/components/loading.vue'
+import backTop from '@/components/backTop.vue'
 import { ref, computed, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
 import { useWindowSize } from '@vueuse/core'
@@ -121,6 +123,12 @@ div {
   position: fixed;
   z-index: -2;
   opacity: 0.5;
+}
+
+.el-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 92vh;
 }
 
 .el-header {

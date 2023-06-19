@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-header class="mt-5 mb-5">
-      <span class="text-5xl w-100 font-bold">Projects{{ width }}</span>
+      <span class="text-5xl w-100 font-bold">Projects</span>
     </el-header>
 
     <el-main class="w-100 flex">
@@ -69,9 +69,6 @@
 <script setup>
 import { ref, computed, defineProps } from 'vue'
 import { useRouter } from 'vue-router'
-import { useWindowSize } from '@vueuse/core'
-
-const width = useWindowSize().width
 
 const props = defineProps({
   //待修改
