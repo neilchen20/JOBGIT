@@ -1,13 +1,14 @@
 <template>
-  <el-container>
+  <el-container class="flex content-center flex-wrap center">
     <el-header class="mt-5 mb-5">
       <span class="text-5xl w-100 font-bold">Interests{{ width }}</span>
     </el-header>
-    <el-main class="items-center">
+    <el-main class="items-center intMain">
       <el-tag
         v-for="interests in interest"
         :key="interests.label"
         :type="interests.type"
+        :style="{ background: interests.background }"
         class="mx-1 mt-2 mb-5 text-lg"
         effect="light"
       >
@@ -17,7 +18,11 @@
         <el-col
           v-for="(colData1, index) in columnData1"
           :key="index"
-          :span="colData1.span"
+          :span="24"
+          :sm="9"
+          :md="10"
+          :xl="6"
+          :lg="6"
           :offset="colData1.offset"
         >
           <el-card class="h-[50vh]" :body-style="{ padding: '0px' }" shadow="hover">
@@ -35,6 +40,7 @@
               <span>{{ colData1.title }} </span>
               <div class="bottom">
                 <span>{{ colData1.time }}</span>
+
                 <el-button text class="button">Operating</el-button>
               </div>
             </div>
@@ -63,6 +69,18 @@
               <span>{{ colData2.title }} </span>
               <div class="bottom">
                 <span>{{ colData2.time }}</span>
+                <el-tag v-for="item in colData2.tags" :key="item" :id="`${colData2.id}`">{{
+                  colData2.label
+                }}</el-tag>
+                <!-- <el-tag
+                  v-for="tags in tag"
+                  :key="tags.label"
+                  :type="tags.type"
+                  :id="`${tags.id}`"
+                  class="mx-1 mt-2 mb-5 text-lg"
+                  effect="light"
+                  >{{ tags.label }}</el-tag
+                > -->
                 <el-button text class="button">Operating</el-button>
               </div>
             </div>
@@ -92,13 +110,24 @@ const goToHome = () => {
 }
 
 const interest = ref([
-  { type: '', label: '#貓奴', background: 'pink' },
-  { type: '', label: '#兩棲爬蟲' },
-  { type: '', label: '#地毯' },
-  { type: '', label: '#騎車' },
-  { type: '', label: '#展覽' },
-  { type: '', label: '#唱歌' }
+  { type: '', label: '#貓奴', background: 'pink', tag: 'test' },
+  { type: '', label: '#兩棲爬蟲', background: 'wheat' },
+  { type: '', label: '#地毯', background: 'yellow' },
+  { type: '', label: '#騎車', background: 'palegreen' },
+  { type: '', label: '#展覽', background: 'aqua' },
+  { type: '', label: '#唱歌', background: 'lightcyan' }
 ])
+
+const tag = ref([{ type: '', label: '#貓奴', background: 'pink', id: 'cat', tag: 'test' }])
+
+const scrollToContent = () => {
+  const element = document.getElementById('cat')
+  if (element) {
+    console.log(element)
+    element.scrollIntoView()
+  }
+  console.log('123')
+}
 
 const columnData1 = [
   {
@@ -134,6 +163,27 @@ const columnData1 = [
     title: 'null',
     time: '',
     photos: ['']
+  },
+  {
+    span: 5,
+    offset: 1,
+    title: 'null',
+    time: '',
+    photos: ['']
+  },
+  {
+    span: 5,
+    offset: 1,
+    title: 'null',
+    time: '',
+    photos: ['']
+  },
+  {
+    span: 5,
+    offset: 1,
+    title: 'null',
+    time: '',
+    photos: ['']
   }
 ]
 const columnData2 = [
@@ -142,7 +192,10 @@ const columnData2 = [
     offset: 0,
     title: 'null',
     time: '',
-    photos: ['']
+    photos: [''],
+    tags: ['123'],
+    id: 'cat',
+    label: '#貓奴'
   },
   {
     span: 5,
@@ -173,6 +226,47 @@ const columnData2 = [
 </script>
 
 <style>
+@media (min-width: 1400px) {
+  .intMain {
+    width: 80%;
+  }
+  .el-col-md-10 {
+    display: block;
+    max-width: 41.6666666667%;
+    flex: 0 0 41.6666666667%;
+    margin: 30px;
+  }
+}
+@media (max-width: 1400px) {
+  .intMain {
+    width: 80%;
+  }
+  .el-col-md-10 {
+    display: block;
+    max-width: 41.6666666667%;
+    flex: 0 0 41.6666666667%;
+    margin: 30px;
+  }
+
+}
+@media (max-width: 1200px) {
+  .intMain {
+    width: 80%;
+  }
+}
+@media (max-width: 768px) {
+  .center {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 465px) {
+}
+
+@media (max-width: 400px) {
+}
+
 .time {
   font-size: 12px;
   color: #999;

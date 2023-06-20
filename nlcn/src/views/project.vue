@@ -193,24 +193,7 @@ const footerText = ref('Neil Chen % cd ↵')
     width: 100%;
   }
 }
-/* @media (max-width: 1024px) {
-  .proTimeline[data-v-64ad5096] {
-    width: 90%;
-  }
-  .proCard {
-    height: 100%;
-    display: grid;
-  }
 
-  .el-image[data-v-64ad5096] {
-    height: 100%;
-  }
-
-  .el-col-12[data-v-64ad5096] {
-    max-height: 100%;
-    max-width: 100%;
-  }
-} */
 @media (max-width: 1024px) {
   .proTimeline[data-v-64ad5096] {
     width: 90%;
