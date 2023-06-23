@@ -1,19 +1,20 @@
 <template>
   <el-container :class="{ 'text-white': theme === 'LIGHT' }">
     <Loading v-if="isLoading" />
+    <ReadingPsBar />
     <div class="background-image"></div>
     <div
-      class="bg-light-50 w-100 h-100 -z-1 fixed"
+      class="darkmode w-100 h-100 -z-1 fixed"
       :class="[darkModeClass, { 'bg-black-50': theme === 'LIGHT' }]"
     ></div>
     <el-header>
       <el-row class="w-100">
         <el-col :span="8"
           ><div class="float-left pl-10 text-xl">
-            <img
+            <el-image
               class="w-10 h-10 cursor-pointer"
               @click="goToHome"
-              :src="theme === 'LIGHT' ? 'src/assets/logoW.png' : 'src/assets/logoB.png'"
+              :src="theme === 'LIGHT' ? logoW : logoB"
               alt="Logo"
             /></div
         ></el-col>
@@ -22,12 +23,21 @@
             <el-col :xs="6" :sm="6" :md="5" :lg="4" :xl="4">
               <template v-if="width < minWidth">
                 <el-icon class="btnani" :size="25" @click="goToProject">
-                  <Memo />
+                  <Checked />
                 </el-icon>
-                <!-- <el-icon name="icon-name"></el-icon> -->
               </template>
               <template v-else>
                 <span class="btnani" @click="goToProject">{{ headerProject }}</span>
+              </template>
+            </el-col>
+            <el-col :xs="6" :sm="6" :md="5" :lg="4" :xl="4">
+              <template v-if="width < minWidth">
+                <el-icon class="btnani" :size="27" @click="goToNote">
+                  <Reading />
+                </el-icon>
+              </template>
+              <template v-else>
+                <span class="btnani" @click="goToNote">{{ headerNote }}</span>
               </template>
             </el-col>
             <el-col :xs="6" :sm="6" :md="5" :lg="4" :xl="4">
@@ -40,14 +50,19 @@
                 <span class="btnani" @click="goToInterest">{{ headerInterest }}</span>
               </template>
             </el-col>
+
             <!-- <el-col :span="6"
               ><span class="cursor-pointer relative underline">{{ headerLogin }}</span></el-col
             > -->
-
             <el-col :xs="6" :sm="6" :md="5" :lg="4" :xl="4">
               <template v-if="width < minWidth">
                 <el-icon class="btnani" :size="25" @click="toggleTheme">
-                  <MoonNight />
+                  <template v-if="theme === 'LIGHT'">
+                    <Sunny />
+                  </template>
+                  <template v-else>
+                    <MoonNight />
+                  </template>
                 </el-icon>
               </template>
               <template v-else>
@@ -60,7 +75,6 @@
         </el-col>
       </el-row>
     </el-header>
-    <router-view :theme="theme" class="hidden" />
     <router-view />
     <backTop />
   </el-container>
@@ -69,7 +83,11 @@
 <script setup>
 import Loading from '@/components/loading.vue'
 import backTop from '@/components/backTop.vue'
-import { ref, computed, onBeforeUnmount } from 'vue'
+import ReadingPsBar from '@/components/rpbar.vue'
+import logoW from './assets/logoW.png'
+import logoB from './assets/logoB.png'
+
+import { ref, computed, onBeforeUnmount, onMounted, watch, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 import { useWindowSize } from '@vueuse/core'
 
@@ -80,14 +98,13 @@ const router = useRouter()
 
 const isLoading = ref(true)
 onBeforeUnmount(() => {
-  console.log('銷毀前')
   isLoading.value = false
 })
 
 const headerProject = ref('PROJECTS')
+const headerNote = ref('NOTES')
 const headerInterest = ref('INTERESTS')
 // const headerLogin = ref('LOGIN')
-const theme = ref('DARK')
 
 const goToHome = () => {
   router.push('/')
@@ -97,15 +114,40 @@ const goToProject = () => {
   router.push('/project')
 }
 
+const goToNote = () => {
+  router.push('/note')
+}
+
 const goToInterest = () => {
   router.push('/interest')
 }
+
 const darkModeClass = computed(() => {
-  return theme.value === 'DARK' ? 'opacity-50' : 'opacity-80 bg-black'
+  return theme.value === 'DARK' ? 'opacity-80 bg-light-50' : 'opacity-80 bg-black'
 })
 const toggleTheme = () => {
   theme.value = theme.value === 'DARK' ? 'LIGHT' : 'DARK'
 }
+
+const handleDarkModeChange = (matches) => {
+  theme.value = matches ? 'LIGHT' : 'DARK'
+}
+const theme = ref('')
+watchEffect(() => {
+  const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)')
+  const isDarkMode = darkModeQuery.matches
+  theme.value = isDarkMode ? 'dark' : 'light'
+})
+
+onMounted(() => {
+  const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)')
+
+  // 初始化設定
+  handleDarkModeChange(darkModeQuery.matches)
+
+  // 監聽設備模式的變化
+  watch(() => darkModeQuery.matches, handleDarkModeChange)
+})
 </script>
 
 <style>

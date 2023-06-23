@@ -2,7 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import index from '../views/index.vue'
 import project from '../views/project.vue'
 import interest from '../views/interest.vue'
-import Apptest from '../views/Apptest.vue'
+import note from '../views/note.vue'
+import apptest from '../views/apptest.vue';
+import vuejs from '../views/notes/vuejs.vue'
 
 
 const router = createRouter({
@@ -22,13 +24,26 @@ const router = createRouter({
       path: '/interest',
       name: 'interest',
       component: interest
+    },
+    {
+      path: '/note',
+      name: 'note',
+      component: note,
+      children: [
+        {
+          path: '/vuejs',
+          name: 'vuejs',
+          component: vuejs
+        }
+      ]
     }
     ,
     {
-      path: '/Apptest',
-      name: 'Apptest',
-      component: Apptest
+      path: '/apptest',
+      name: 'apptest',
+      component: apptest
     }
+
   ]
 })
 

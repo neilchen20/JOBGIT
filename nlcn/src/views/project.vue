@@ -1,7 +1,7 @@
 <template>
-  <el-container>
+  <div>
     <el-header class="mt-5 mb-5">
-      <span class="text-5xl w-100 font-bold">Projects</span>
+      <span class="text-5xl w-100 font-bold">{{ Projects }}</span>
     </el-header>
 
     <el-main class="w-100 flex">
@@ -15,7 +15,7 @@
           hollow
           :color="card.color"
         >
-          <el-card :body-style="fontColor">
+          <el-card>
             <el-row class="proCard">
               <el-col class="proPhoto" :span="12">
                 <el-image
@@ -58,33 +58,34 @@
         </el-timeline-item>
       </el-timeline>
     </el-main>
-
-    <el-footer class="m-13">
-      <span class="cursor-pointer mr-100 btnani" @click="goToHome">{{ footerText }}</span>
-    </el-footer>
+    <footerText />
     <router-view />
-  </el-container>
+  </div>
 </template>
 
 <script setup>
-import { ref, computed, defineProps } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref } from 'vue'
+import footerText from '@/components/footertext.vue'
+import proNLC1 from '../assets/project/proNLC1.png'
+import proNLC2 from '../assets/project/proNLC2.png'
 
-const props = defineProps({
-  //待修改
-  theme: {
-    type: String,
-    required: true
-  }
-})
+import proMCI1 from '../assets/project/proMCI1.png'
+import proMCI2 from '../assets/project/proMCI2.png'
+import proMCI3 from '../assets/project/proMCI3.png'
+import proMCI4 from '../assets/project/proMCI4.png'
+import proMCI5 from '../assets/project/proMCI5.png'
+import proMCI6 from '../assets/project/proMCI6.png'
 
-const fontColor = computed(() => ({
-  Color: props.theme === 'DARK' ? 'black' : 'white'
-}))
-console.log(props.theme)
+import proShen1 from '../assets/project/proShen1.png'
+import proShen2 from '../assets/project/proShen2.png'
+import proShen3 from '../assets/project/proShen3.png'
+import proShen4 from '../assets/project/proShen4.png'
+import proShen5 from '../assets/project/proShen5.png'
+
+const Projects = ref('Projects')
 
 const goToMCI = () => {
-  window.location.href = 'https://neilchen20.github.io/MCIdemo/index.html'
+  window.open('https://nlcn.me/demo/DSMdemo')
 }
 
 const cards = ref([
@@ -92,31 +93,23 @@ const cards = ref([
     id: 1,
     timestamp: '2023/5/20~',
     color: '#0bbd87',
-    url: '/src/assets/project/proNLC1.png',
-    srcList: ['/src/assets/project/proNLC1.png', '/src/assets/project/proNLC2.png'],
+    url: proNLC1,
+    srcList: [proNLC1, proNLC2],
     title: 'Neil Chen個人網站',
     content:
-      '在完成已上架的第二份作品後，我透過自學來提升自己的能力，目前正在練習製作我的個人網站，裡面有我過往的作品、興趣以及未來會有的按讚功能等等。',
+      '在完成已上架的第二份作品後，我透過自學來提升自己的能力，目前正在練習製作我的個人網站，裡面有我過往的作品、興趣等。',
     tags: [
       { type: 'success', label: 'Vue.js' },
       { type: '', label: 'Element Plus' },
       { type: '', label: 'Windi CSS' }
-    ],
-    btn: 'Open'
+    ]
   },
   {
     id: 2,
     timestamp: '~2023/1/6',
     color: 'gray',
-    url: '/src/assets/project/proMCI1.png',
-    srcList: [
-      '/src/assets/project/proMCI1.png',
-      '/src/assets/project/proMCI2.png',
-      '/src/assets/project/proMCI3.png',
-      '/src/assets/project/proMCI4.png',
-      '/src/assets/project/proMCI5.png',
-      '/src/assets/project/proMCI6.png'
-    ],
+    url: proMCI1,
+    srcList: [proMCI1, proMCI2, proMCI3, proMCI4, proMCI5, proMCI6],
     title: '大量傷病患救護管理系統',
     content:
       '該系統的功能主要是讓消防人員藉由大傷系統瞭解案件現場的狀況，整個架構分為案件資訊、救護站資訊以及傷病患資訊等頁面，可以看到各個案件內的分析數據。',
@@ -132,8 +125,8 @@ const cards = ref([
     id: 3,
     timestamp: '~2022/6/26',
     color: 'gray',
-    url: '/src/assets/project/proShen1.png',
-    srcList: ['/src/assets/project/proShen1.png'],
+    url: proShen1,
+    srcList: [proShen1, proShen2, proShen3, proShen4, proShen5],
     title: '客戶資料紀錄管理系統',
     content:
       '該系統為自行接案的項目，我在理解店家需求後進行開發，店家可以透過此系統進行顧客的資料創建、維護、查找及刪除，可記錄姓名、地址、電話、維修項目與金額。',
@@ -141,17 +134,9 @@ const cards = ref([
       { type: '', label: 'Windows Form' },
       { type: 'success', label: 'C#' },
       { type: 'info', label: 'SSMS' }
-    ],
-    btn: 'Open'
+    ]
   }
 ])
-
-const router = useRouter()
-const goToHome = () => {
-  router.push('/')
-}
-
-const footerText = ref('Neil Chen % cd ↵')
 </script>
 
 <style scoped>
@@ -164,7 +149,7 @@ const footerText = ref('Neil Chen % cd ↵')
   line-height: 40px;
   letter-spacing: 0.05em;
   text-align: justify;
-  font-size: 1.125rem; /* 18px */
+  font-size: 1.125rem;
 }
 .el-timeline-item__wrapper {
   height: 100%;
@@ -173,18 +158,6 @@ const footerText = ref('Neil Chen % cd ↵')
 @media (min-width: 1024px) {
   .proTimeline[data-v-64ad5096] {
     width: 70%;
-  }
-  .proCard {
-    height: auto;
-  }
-  .el-image[data-v-64ad5096] {
-    height: 100%;
-  }
-
-  .el-col-12[data-v-64ad5096] {
-    height: auto;
-    max-height: 100%;
-    max-width: 100%;
   }
 
   .proTagdiv {
@@ -203,11 +176,6 @@ const footerText = ref('Neil Chen % cd ↵')
     display: grid;
   }
 
-  .el-col-12[data-v-64ad5096] {
-    height: 100%;
-    max-width: 100%;
-  }
-
   .el-image[data-v-64ad5096] {
     height: 95%;
   }
@@ -222,7 +190,6 @@ const footerText = ref('Neil Chen % cd ↵')
 
 @media (max-width: 400px) {
   .proCard {
-    /* height: 1000px; */
     height: 100%;
     display: grid;
   }
@@ -248,10 +215,6 @@ const footerText = ref('Neil Chen % cd ↵')
 .image {
   width: 100%;
   display: block;
-}
-
-.el-col-12 {
-  height: 246px;
 }
 
 .proTimeline-Dark {

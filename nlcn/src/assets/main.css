@@ -1,20 +1,26 @@
 @import './base.css';
 
-::-webkit-scrollbar {
-  display: none;
-}
+
 
 html{
   max-width: 100%;
   height: auto;
   user-select:none;
+  overflow: hidden;
+  height: 100%;
 }
 
 body {
   max-width: 100%;
   height: auto;
   overflow-x: hidden;
+  color: rgb(58, 58, 58);
+  -ms-overflow-style: none;
 }
+body::-webkit-scrollbar {
+  display: none;
+}
+
 
 #app {
   width: 100vw;
@@ -22,6 +28,7 @@ body {
   margin: 0 auto;
   font-weight: normal;
   text-align: center;
+  overflow: hidden;
 }
 
 .backTop{
