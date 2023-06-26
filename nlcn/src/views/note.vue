@@ -3,10 +3,10 @@
     <el-header class="mt-5 mb-5">
       <span class="text-5xl w-100 font-bold">{{ Notes }}{{ width }}</span>
     </el-header>
+    <div class="none">
+      <span class="left-30 mt-50 fixed text-5xl z-20 text-yellow-300">建置中...</span>
+    </div>
     <el-main class="w-[100%] h-auto flex">
-      <div class="none">
-        <span class="left-30 mt-50 fixed text-5xl z-20 text-yellow-300">建置中...Sorry</span>
-      </div>
       <el-row class="noMain">
         <el-col class="min-w-[20%] h-[100%]" :span="5">
           <template v-if="width < minWidth">
@@ -128,10 +128,10 @@ const handleNodeClick = (data) => {
   background: radial-gradient(transparent 1px, #1414146f 1px);
   background-size: 6px 6px;
   backdrop-filter: saturate(50%) blur(4px);
-  height: 100vh;
+  height: 70vh;
   width: 100vw;
-  position: fixed;
-  z-index: 10;
+  position: absolute;
+  z-index: 1;
 }
 
 @media (min-width: 1400px) {

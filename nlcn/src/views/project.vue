@@ -1,10 +1,10 @@
 <template>
   <div>
     <el-header class="mt-5 mb-5">
-      <span class="text-5xl w-100 font-bold">{{ Projects }}</span>
+      <span class="text-5xl w-[100%] font-bold">{{ Projects }}</span>
     </el-header>
 
-    <el-main class="w-100 flex">
+    <el-main class="w-[100%] flex p-0">
       <el-timeline class="proTimeline">
         <el-timeline-item
           v-for="card in cards"
@@ -28,7 +28,7 @@
                   close-on-press-escape
                 />
               </el-col>
-              <el-col class="relative" :span="12">
+              <el-col class="relative max-w-[100%]" :span="12">
                 <span class="text-xl font-bold">{{ card.title }}</span
                 ><br />
                 <span class="proCardCon">{{ card.content }}</span>
@@ -140,6 +140,9 @@ const cards = ref([
 </script>
 
 <style scoped>
+.proPhoto {
+  max-width: 100%;
+}
 .proCardCon {
   display: flex;
   margin-top: 20px;

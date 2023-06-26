@@ -1,10 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import index from '../views/index.vue'
-import project from '../views/project.vue'
-import interest from '../views/interest.vue'
-import note from '../views/note.vue'
-import apptest from '../views/apptest.vue';
-import vuejs from '../views/notes/vuejs.vue'
 
 
 const router = createRouter({
@@ -13,27 +7,27 @@ const router = createRouter({
     {
       path: '/',
       name: 'index',
-      component: index
+      component: () => import ('../views/index.vue')
     },
     {
       path: '/project',
       name: 'project',
-      component: project
+      component: () => import ('../views/project.vue')
     },
     {
       path: '/interest',
       name: 'interest',
-      component: interest
+      component: () => import ('../views/interest.vue')
     },
     {
       path: '/note',
       name: 'note',
-      component: note,
+      component: () => import ('../views/note.vue'),
       children: [
         {
           path: '/vuejs',
           name: 'vuejs',
-          component: vuejs
+          component: () => import ('../views/notes/vuejs.vue')
         }
       ]
     }
@@ -41,7 +35,7 @@ const router = createRouter({
     {
       path: '/apptest',
       name: 'apptest',
-      component: apptest
+      component: () => import ('../views/apptest.vue')
     }
 
   ]

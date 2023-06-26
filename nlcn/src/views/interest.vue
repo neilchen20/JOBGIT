@@ -3,7 +3,7 @@
     <el-header class="mt-5 mb-5">
       <span class="text-5xl w-100 font-bold">{{ Interests }}</span>
     </el-header>
-    <el-main class="flex w-100 flex-wrap">
+    <el-main class="flex w-[100%] flex-wrap">
       <el-tag
         v-for="interests in interest"
         :key="interests.label"
@@ -26,7 +26,7 @@
           :offset="colData1.offset"
         >
           <el-card
-            class="elcard"
+            class="w-[80%]"
             :body-style="{ padding: '0px' }"
             shadow="hover"
             style="background-color: rgba(255, 255, 255, 0.63)"

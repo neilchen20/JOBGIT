@@ -4,11 +4,11 @@
     <ReadingPsBar />
     <div class="background-image"></div>
     <div
-      class="darkmode w-100 h-100 -z-1 fixed"
+      class="darkmode w-[100%] h-[100%] -z-1 fixed"
       :class="[darkModeClass, { 'bg-black-50': theme === 'LIGHT' }]"
     ></div>
     <el-header>
-      <el-row class="w-100">
+      <el-row class="w-[100%]">
         <el-col :span="8"
           ><div class="float-left pl-10 text-xl">
             <el-image
@@ -178,7 +178,7 @@ div {
   align-items: center;
   position: sticky;
   top: 0;
-  margin-top: 15px;
+  margin-top: 40px;
 }
 
 .el-row {
