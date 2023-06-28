@@ -240,9 +240,7 @@
   </main>
     
   <script type=text/javascript>
-  function home() {
-    window.open('https://nlcn.me', '_blank')
-  }
+  
     const renewt = 5000;
     const county_order=["基隆市","臺北市","台北市","新北市","桃園市","新竹市","新竹縣","苗栗縣","臺中市","台中市","彰化縣","南投縣","雲林縣",
                   "嘉義市","嘉義縣","臺南市","台南市","高雄市","屏東縣","臺東縣","台東縣","宜蘭縣","花蓮縣","澎湖縣","金門縣","連江縣"]
@@ -271,8 +269,11 @@
     var pagination='home';
     var hos_data=[];
     var select_pid='';
+    function home() {
+      window.loopen('https://nlcn.me')
+    }
     function getRandom(min,max){
-        return Math.floor(Math.random()*(max-min+1))+min;
+      return Math.floor(Math.random()*(max-min+1))+min;
     };
     function getRandomPhone() {
       let randomNumber = Math.floor(Math.random() * 90000000) + 10000000;
