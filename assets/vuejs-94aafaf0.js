@@ -1,1 +1,0 @@
-import{_ as e,o as s,c as t,d as c}from"./index-750ec277.js";const o={},a=c("span",{class:"w-50 h-50 bg-dark-50 text-lg"},"我是vue",-1),n=[a];function r(_,d){return s(),t("div",null,n)}const f=e(o,[["render",r]]);export{f as default};
