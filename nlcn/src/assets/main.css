@@ -66,6 +66,7 @@ body::-webkit-scrollbar {
   transform-origin: bottom left;
 }
 
+
 @media (min-width: 1024px) {
   /* body {
     display: flex;
@@ -77,6 +78,15 @@ body::-webkit-scrollbar {
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   } */
+  .ft {
+    font-size: large;
+  }
+}
+
+@media (max-width: 1024px) {
+  .ft {
+    font-size: revert;
+  }
 }
 
 /* @media (max-width: 768px) {

@@ -30,8 +30,7 @@ const router = createRouter({
           component: () => import ('../views/notes/vuejs.vue')
         }
       ]
-    }
-    ,
+    },
     {
       path: '/apptest',
       name: 'apptest',

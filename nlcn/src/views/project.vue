@@ -65,6 +65,9 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
 import footerText from '@/components/footertext.vue'
 import proNLC1 from '../assets/project/proNLC1.png'
 import proNLC2 from '../assets/project/proNLC2.png'
@@ -85,7 +88,7 @@ import proShen5 from '../assets/project/proShen5.png'
 const Projects = ref('Projects')
 
 const goToMCI = () => {
-  window.open('https://nlcn.me/demo/DSMdemo')
+  window.location.href = 'https://nlcn.me/mcidemo/index.html'
 }
 
 const cards = ref([
@@ -188,6 +191,9 @@ const cards = ref([
   .proCard {
     height: 100%;
     display: grid;
+  }
+  .el-timeline-item__wrapper {
+    padding-left: 15px;
   }
 }
 

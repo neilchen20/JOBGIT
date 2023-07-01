@@ -14,7 +14,7 @@ const handleScroll = () => {
   const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
   const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
   const progressWidth = (scrollTop / scrollHeight) * 100
-  progress.value.style.setProperty('width', `${progressWidth}%`)
+  progress.value.style.setProperty('width', `${progressWidth}vw`)
   if (progressWidth > 0) {
     progress.value.style.display = 'block'
   }

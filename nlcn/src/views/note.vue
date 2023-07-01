@@ -60,7 +60,7 @@ import { useRouter } from 'vue-router'
 // 创建路由实例
 const router = useRouter()
 const goToVue = () => {
-  router.push('/notes/vuejs')
+  router.push('/notes')
 }
 
 const width = useWindowSize().width
@@ -72,18 +72,12 @@ const currentPath = ref('')
 const data = ref([
   {
     label: 'Vue.js',
-    path: '/index',
-    views: index,
     children: [
       {
-        label: '快速起手式！！',
-        path: '/index',
-        component: () => import('../views/index.vue'),
-        click: goToVue
+        label: '快速起手式！！'
       },
       {
-        label: '體驗自動化測試Selenium',
-        path: '/contact'
+        label: '體驗自動化測試Selenium'
       }
     ]
   },

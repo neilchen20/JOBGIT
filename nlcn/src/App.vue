@@ -30,7 +30,7 @@
                 <span class="btnani" @click="goToProject">{{ headerProject }}</span>
               </template>
             </el-col>
-            <el-col :xs="6" :sm="6" :md="5" :lg="4" :xl="4">
+            <!-- <el-col :xs="6" :sm="6" :md="5" :lg="4" :xl="4">
               <template v-if="width < minWidth">
                 <el-icon class="btnani" :size="27" @click="goToNote">
                   <Reading />
@@ -39,7 +39,7 @@
               <template v-else>
                 <span class="btnani" @click="goToNote">{{ headerNote }}</span>
               </template>
-            </el-col>
+            </el-col> -->
             <el-col :xs="6" :sm="6" :md="5" :lg="4" :xl="4">
               <template v-if="width < minWidth">
                 <el-icon class="btnani" :size="27" @click="goToInterest">

@@ -9,7 +9,7 @@
         :key="interests.label"
         :type="interests.type"
         :style="{ background: interests.background }"
-        class="mx-1 mt-2 mb-5 text-lg"
+        class="mx-1 mt-2 mb-5"
         effect="light"
       >
         {{ interests.label }}
@@ -25,12 +25,7 @@
           :lg="6"
           :offset="colData1.offset"
         >
-          <el-card
-            class="w-[80%]"
-            :body-style="{ padding: '0px' }"
-            shadow="hover"
-            style="background-color: rgba(255, 255, 255, 0.63)"
-          >
+          <el-card :body-style="{ padding: '0px' }" shadow="hover" class="elcard">
             <el-carousel indicator-position="none">
               <el-carousel-item v-for="item in colData1.photos" :key="item">
                 <el-image
@@ -71,48 +66,48 @@
 import { ref } from 'vue'
 import defaultImg from '../assets/fimage.svg'
 import footerText from '@/components/footertext.vue'
-import int050701 from '../assets/interest/int050701.jpg'
-import int050702 from '../assets/interest/int050702.jpg'
-import int050703 from '../assets/interest/int050703.jpg'
-import int050704 from '../assets/interest/int050704.jpg'
-import int050705 from '../assets/interest/int050705.jpg'
-import int050706 from '../assets/interest/int050706.jpg'
+import int050701 from '../assets/interest/int050701.webp'
+import int050702 from '../assets/interest/int050702.webp'
+import int050703 from '../assets/interest/int050703.webp'
+import int050704 from '../assets/interest/int050704.webp'
+import int050705 from '../assets/interest/int050705.webp'
+import int050706 from '../assets/interest/int050706.webp'
 
-import int040401 from '../assets/interest/int040401.jpg'
-import int040402 from '../assets/interest/int040402.jpg'
-import int040403 from '../assets/interest/int040403.jpg'
-import int040404 from '../assets/interest/int040404.jpg'
-import int040405 from '../assets/interest/int040405.jpg'
+import int040401 from '../assets/interest/int040401.webp'
+import int040402 from '../assets/interest/int040402.webp'
+import int040403 from '../assets/interest/int040403.webp'
+import int040404 from '../assets/interest/int040404.webp'
+import int040405 from '../assets/interest/int040405.webp'
 
-import int123001 from '../assets/interest/int123001.jpg'
-import int123002 from '../assets/interest/int123002.jpg'
-import int123003 from '../assets/interest/int123003.jpg'
-import int123004 from '../assets/interest/int123004.jpg'
-import int123005 from '../assets/interest/int123005.jpg'
+import int123001 from '../assets/interest/int123001.webp'
+import int123002 from '../assets/interest/int123002.webp'
+import int123003 from '../assets/interest/int123003.webp'
+import int123004 from '../assets/interest/int123004.webp'
+import int123005 from '../assets/interest/int123005.webp'
 
-import int101001 from '../assets/interest/int101001.jpg'
-import int101002 from '../assets/interest/int101002.jpg'
-import int101003 from '../assets/interest/int101003.jpg'
-import int101004 from '../assets/interest/int101004.jpg'
-import int101005 from '../assets/interest/int101005.jpg'
-import int101006 from '../assets/interest/int101006.jpg'
-import int101007 from '../assets/interest/int101007.jpg'
-import int101008 from '../assets/interest/int101008.jpg'
-import int101009 from '../assets/interest/int101009.jpg'
-import int101010 from '../assets/interest/int101010.jpg'
+import int101001 from '../assets/interest/int101001.webp'
+import int101002 from '../assets/interest/int101002.webp'
+import int101003 from '../assets/interest/int101003.webp'
+import int101004 from '../assets/interest/int101004.webp'
+import int101005 from '../assets/interest/int101005.webp'
+import int101006 from '../assets/interest/int101006.webp'
+import int101007 from '../assets/interest/int101007.webp'
+import int101008 from '../assets/interest/int101008.webp'
+import int101009 from '../assets/interest/int101009.webp'
+import int101010 from '../assets/interest/int101010.webp'
 
-import int081601 from '../assets/interest/int081601.jpg'
-import int081602 from '../assets/interest/int081602.jpg'
-import int081603 from '../assets/interest/int081603.jpg'
-import int081604 from '../assets/interest/int081604.jpg'
+import int081601 from '../assets/interest/int081601.webp'
+import int081602 from '../assets/interest/int081602.webp'
+import int081603 from '../assets/interest/int081603.webp'
+import int081604 from '../assets/interest/int081604.webp'
 
-import int020901 from '../assets/interest/int020901.jpg'
-import int020902 from '../assets/interest/int020902.jpg'
-import int020903 from '../assets/interest/int020903.jpg'
-import int020904 from '../assets/interest/int020904.jpg'
-import int020905 from '../assets/interest/int020905.jpg'
-import int020906 from '../assets/interest/int020906.jpg'
-import int020907 from '../assets/interest/int020907.jpg'
+import int020901 from '../assets/interest/int020901.webp'
+import int020902 from '../assets/interest/int020902.webp'
+import int020903 from '../assets/interest/int020903.webp'
+import int020904 from '../assets/interest/int020904.webp'
+import int020905 from '../assets/interest/int020905.webp'
+import int020906 from '../assets/interest/int020906.webp'
+import int020907 from '../assets/interest/int020907.webp'
 
 const Interests = ref('Interests')
 
@@ -132,7 +127,7 @@ const columnData1 = ref([
   {
     span: 5,
     offset: 0,
-    title: 'sec挑戰單人進階',
+    title: 'DIY地毯 - sec挑戰單人進階',
     time: '2023.05.07',
     photos: [int050701, int050702, int050703, int050704, int050705, int050706]
   },
@@ -194,13 +189,15 @@ const columnData1 = ref([
   height: 400px;
   object-fit: contain;
 }
+.elcard {
+  background-color: rgba(255, 255, 255, 0.63);
+}
 @media (min-width: 1400px) {
   .intMain {
     width: 80%;
   }
   .el-col-md-10 {
     display: block;
-    max-width: 41.6666666667%;
     flex: 0 0 41.6666666667%;
     margin: 30px;
   }
@@ -211,14 +208,23 @@ const columnData1 = ref([
   }
   .el-col-md-10 {
     display: block;
-    max-width: 41.6666666667%;
-    flex: 0 0 41.6666666667%;
+    max-width: 85%;
     margin: 30px;
   }
 }
 @media (max-width: 1200px) {
   .intMain {
     width: 80%;
+  }
+}
+@media (min-width: 1025px) {
+  .el-tag {
+    font-size: large;
+  }
+}
+@media (max-width: 1024px) {
+  .el-tag {
+    font-size: revert;
   }
 }
 @media (min-width: 768px) {

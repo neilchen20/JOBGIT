@@ -1,7 +1,7 @@
 {
   "name": "nlcn",
   "homepage": "https://neilchen20.github.io/Neilgit",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -36,6 +36,7 @@
     "unplugin-auto-import": "^0.16.2",
     "unplugin-vue-components": "^0.24.1",
     "vite": "^4.3.8",
+    "vite-plugin-static-copy": "^0.16.0",
     "vite-plugin-windicss": "^1.9.0",
     "windicss": "^3.5.6"
   }

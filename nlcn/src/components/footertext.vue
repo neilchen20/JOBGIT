@@ -1,6 +1,6 @@
 <template>
   <el-footer class="m-13">
-    <span class="mr-100 btnani textBlack" id="ft" @click="goToHome">{{ footerText }}</span>
+    <span class="mr-100 btnani textBlack ft w-[100%]" @click="goToHome">{{ footerText }}</span>
   </el-footer>
 </template>
 
@@ -14,4 +14,10 @@ const goToHome = () => {
 const footerText = ref('Neil Chen % cd ↵')
 </script>
 
-<style></style>
+<style>
+@media (max-width: 1024px) {
+  .ft {
+    font-size: small;
+  }
+}
+</style>
