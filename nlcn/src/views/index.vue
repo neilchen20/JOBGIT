@@ -20,7 +20,7 @@ const main = ref(
   'Hi，我是Neil Chen，來自臺北市，是德明財經科大資訊管理學系的應屆畢業生。目前在三商電腦股份有限公司擔任實習工程師一職，主要負責前端開發。曾參與開發消防署和消防單位的網頁儀表板，並受到相關人員的肯定。\n<p class="mt-5"/>我的技術主要包括HTML、CSS、JavaScript和DataTables。在開發過程中，我採用了RWD響應式網頁設計方式。目前我正在自學Vue.js、Element Plus、Windi CSS和Mock.js等技術，並透過實作練習兩個專案，其中包括您現在看到的個人網站和網頁儀表板。網頁儀表板是對舊有技術的升級和改進。'
 )
 const footer = ref(
-  '<a class="btnani text-base" href="mailto:neil.cwn20@gmail.com">neil.cwn20@gmail.com</a>\n<div class="relative w-[100%]">© 2023 Neil Chen</div><span class="float-right opacity-5 relative">v1.0.2</span>'
+  '<a class="btnani text-base" href="mailto:neil.cwn20@gmail.com">neil.cwn20@gmail.com</a>\n<div class="relative w-[100%]">© 2023 Neil Chen</div> <img style="opacity: 0.2" src="https://www.f-counter.net/j/63/1708486094/" alt="計數器"><span class="float-right opacity-5 relative">v1.0.4</span>'
 )
 </script>
 
