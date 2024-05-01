@@ -11,6 +11,11 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import 'virtual:windi.css'
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+
+
 
 
 const vuetify = createVuetify({

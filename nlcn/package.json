@@ -19,9 +19,12 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/vue-fontawesome": "^3.0.3",
+    "axios": "^1.6.7",
+    "bootstrap": "^5.3.3",
     "element-plus": "^2.3.5",
     "express": "^4.18.2",
     "gh-pages": "^3.0.0",
+    "swiper": "^11.0.7",
     "vue": "^3.3.2",
     "vue-router": "^4.2.0",
     "vuetify": "^3.3.1"
