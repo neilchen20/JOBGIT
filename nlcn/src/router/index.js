@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import project from '../views/project.vue'
 
 
 const router = createRouter({
@@ -10,9 +11,19 @@ const router = createRouter({
       component: () => import ('../views/index.vue')
     },
     {
+      path: '/projects',
+      name: 'projects',
+      component: () => import ('../views/projects.vue')
+    },
+    {
+      path: '/swiper',
+      name: 'swiper',
+      component: () => import ('../views/swiper.vue')
+    },
+    {
       path: '/project',
       name: 'project',
-      component: () => import ('../views/project.vue')
+      component: project
     },
     {
       path: '/interest',

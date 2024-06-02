@@ -41,14 +41,14 @@ body::-webkit-scrollbar {
   background-color: rgba(0, 0, 0, 0);
 }
 
-.btnani {
+.btn-hover {
   cursor: pointer;
   font-size: 20px;
   position: relative;
   align-items: center;
   justify-content: center;
 }
-.btnani:after {
+.btn-hover:after {
   content: '';
   position: absolute;
   width: 100%;
@@ -61,7 +61,7 @@ body::-webkit-scrollbar {
   transition: transform 0.25s ease-out;
 }
 
-.btnani:hover:after {
+.btn-hover:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }

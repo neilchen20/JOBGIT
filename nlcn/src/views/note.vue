@@ -39,7 +39,7 @@
           </template>
         </el-col>
         <el-col class="changeindex" :span="19">
-          <el-icon class="btnani" :size="25" @click="goToVue">
+          <el-icon class="btn-hover" :size="25" @click="goToVue">
             <Checked />
           </el-icon>
         </el-col>

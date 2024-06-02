@@ -169,7 +169,7 @@ const columnData1 = ref([
     title: 'Gogoro 快閃台北橋',
     time: '2020.08.16',
     photos: [int081601, int081602, int081603, int081604],
-    class: 'btnani',
+    class: 'btn-hover',
     href: 'https://www.gogoro.com/tw/news/2020-08-16-gogoro-taipei-bridge/',
     target: '_blank'
   },
