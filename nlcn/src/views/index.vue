@@ -25,7 +25,7 @@ const footerContent = ref('')
 
 onMounted(async () => {
   try {
-    const response = await axios.get('https://nlcn-cms-heroku-7e5d0eb98244.herokuapp.com/api/home-pages?populate=hometitle')
+    const response = await axios.get('https://nlcn.zeabur.app/api/home-pages?populate=hometitle')
     const homePageData = response.data.data[0].attributes
     mainText.value = homePageData.HomeTitle
     footerContent.value = `
