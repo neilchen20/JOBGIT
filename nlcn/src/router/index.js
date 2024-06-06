@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-
-const routers = [
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
     {
       path: '/',
       name: 'index',
@@ -23,7 +24,7 @@ const routers = [
       component: () => import ('../views/note.vue'),
       children: [
         {
-          path: '/vuejs',
+          path: 'vuejs',
           name: 'vuejs',
           component: () => import ('../views/notes/vuejs.vue')
         }
@@ -35,27 +36,15 @@ const routers = [
       component: () => import ('../views/apptest.vue')
     },
     {
-    path: "/404",
-    // alias: "*",
-    name: "notFound",
-    component: () => import("../views/NotFound.vue"),
-  },
-  {
-    path: "/:catchAll(.*)",
-    redirect: "/404",
-  },
-]
-const router = createRouter({
-  history: createWebHistory('/'),
-  routes: routers,
+      path: '/404',
+      name: 'notFound',
+      component: () => import ('../views/NotFound.vue')
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: '/404'
+    }
+  ]
 })
-
-router.beforeEach((to, from, next) => {
-  if (!to.matched.length) {
-    next('/404');
-  } else {
-    next();
-  }
-});
 
 export default router
