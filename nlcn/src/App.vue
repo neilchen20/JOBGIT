@@ -1,6 +1,6 @@
 <template>
   <el-container :class="{ 'text-white': theme === 'LIGHT' }">
-    <Loading v-if="isLoading" />
+    <!-- <Loading v-if="isLoading" /> -->
     <ReadingPsBar />
     <div class="background-image"></div>
     <div

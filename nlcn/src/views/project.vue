@@ -4,7 +4,7 @@
       <span class="text-5xl w-[100%] font-bold">{{ Projects }}</span>
     </el-header>
 
-    <el-main class="w-[100%] flex p-0">
+    <el-main class="w-[100%] flex justify-center p-0">
       <el-timeline class="proTimeline">
         <el-timeline-item
           v-for="card in cards"
@@ -88,7 +88,7 @@ import proShen5 from '../assets/project/proShen5.png'
 const Projects = ref('Projects')
 
 const goToMCI = () => {
-  window.location.href = 'https://nlcn.me/mcidemo/index.html'
+  window.location.href = 'https://neilc.me/mcidemo/index.html'
 }
 
 const cards = ref([

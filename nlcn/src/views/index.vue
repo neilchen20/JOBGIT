@@ -1,5 +1,6 @@
 <template>
   <div class="h-[100%]">
+    <Loading v-if="isLoading" />
     <el-container>
       <el-main class="flex">
         <div id="mainText">
@@ -18,14 +19,16 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-
+import Loading from '@/components/loading.vue'
+const isLoading = ref(true)
 const date = ref(new Date().getFullYear())
 const mainText = ref('')
 const footerContent = ref('')
 
 onMounted(async () => {
   try {
-    const response = await axios.get('https://nlcn.zeabur.app/api/home-pages?populate=hometitle')
+    const response = await axios.get('https://admin.neilc.me/api/home-pages?populate=hometitle')
+    // const response = await axios.get('http://localhost:1337/api/home-pages?populate=hometitle')
     const homePageData = response.data.data[0].attributes
     mainText.value = homePageData.HomeTitle
     footerContent.value = `
@@ -33,6 +36,7 @@ onMounted(async () => {
       <div class="relative w-[100%]">© ${date.value} Neil Chen</div> 
       <img style="opacity: 0.2" src="https://www.f-counter.net/j/63/1708486094/" alt="計數器">
       <span class="float-right opacity-5 relative">v1.1.0</span>`
+    isLoading.value = false
   } catch (error) {
     console.error('Error fetching data:', error)
   }

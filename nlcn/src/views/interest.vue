@@ -3,7 +3,7 @@
     <el-header class="mt-5 mb-5">
       <span class="text-5xl w-100 font-bold">{{ Interests }}</span>
     </el-header>
-    <el-main class="flex w-[100%] flex-wrap">
+    <el-main class="flex w-[100%] flex-wrap justify-center">
       <el-tag
         v-for="interests in interest"
         :key="interests.label"

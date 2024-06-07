@@ -3,7 +3,7 @@
     <div v-if="!isLoading" class="content"></div>
     <div v-else class="loading-container">
       <div class="background-overlay"></div>
-      <el-image :src="logo" alt="Logo" class="logo mb-5" />
+      <!-- <el-image :src="logo" alt="Logo" class="logo mb-5" /> -->
       <span class="loader mt-5"></span>
     </div>
   </transition>
@@ -13,11 +13,6 @@
 import { ref, onMounted } from 'vue'
 import logo from '../assets/logoW.png'
 const isLoading = ref(true)
-onMounted(() => {
-  setTimeout(() => {
-    isLoading.value = false
-  }, 1000)
-})
 </script>
 
 <style>
