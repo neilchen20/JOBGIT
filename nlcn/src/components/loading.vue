@@ -4,7 +4,7 @@
     <div v-else class="loading-container">
       <div class="background-overlay"></div>
       <!-- <el-image :src="logo" alt="Logo" class="logo mb-5" /> -->
-      <span class="loader mt-5"></span>
+      <span class="loader"></span>
     </div>
   </transition>
 </template>

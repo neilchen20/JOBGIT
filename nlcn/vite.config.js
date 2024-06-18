@@ -6,6 +6,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import WindiCSS from 'vite-plugin-windicss'
+import { VitePWA } from 'vite-plugin-pwa'
 
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
@@ -19,7 +20,8 @@ export default defineConfig({
             }),
             Components({
               resolvers: [ElementPlusResolver()],
-            })
+            }),
+            VitePWA({ registerType: 'autoUpdate' })
             // ,
             // viteStaticCopy({
             //   targets: [{ src: 'public/mcidemo', dest: 'dist' }]
