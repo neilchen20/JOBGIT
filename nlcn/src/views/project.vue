@@ -88,7 +88,7 @@ import proShen5 from '../assets/project/proShen5.png'
 const Projects = ref('Projects')
 
 const goToMCI = () => {
-  window.location.href = 'https://neilc.me/mcidemo/index.html'
+  window.location.href = 'https://mcidemo.neilc.me/'
 }
 
 const cards = ref([
