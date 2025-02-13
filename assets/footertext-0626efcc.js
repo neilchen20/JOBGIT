@@ -1,1 +1,0 @@
-import{u as a,r,b as n,d as c,w as _,g as l,t as u,i as p}from"./index-715b8bfb.js";const d={__name:"footertext",setup(i){const t=a(),e=()=>{t.push("/")},o=r("Neil Chen % cd ↵");return(f,m)=>{const s=p;return n(),c(s,{class:"m-13"},{default:_(()=>[l("span",{class:"mr-100 btnani textBlack ft w-[100%]",onClick:e},u(o.value),1)]),_:1})}}};export{d as _};
